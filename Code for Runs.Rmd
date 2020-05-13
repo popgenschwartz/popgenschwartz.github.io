@@ -12,4 +12,24 @@ rmarkdown::render_site()
 
 ##hit ctrl-alt-M to commit changes. Make sure all boxes are checked first. Add a comment, click commit, and then push to github. A box should appear telling you everything has pushed successfully.
 
+#the r version for commiting and pushing files can be really touchy. To do it from the command line, use the following code: 
+
+#go to directory 
+
+#git add .
+#git commit
+#git push
+
+# you get an error during commit that says it is already running, that is due to the fact that it is running in R. 
+
+#use "rm FILENAME" to get rid of it, and then use the commit command
+
+#be sure to use helpful comments so when you look at the version history, it makes sense
+
 ```
+
+>Helpful webpages: 
+https://livefreeordichotomize.com/2017/08/08/how-to-make-an-rmarkdown-website/
+
+>Icons for Markdown:
+https://fontawesome.com/icons/browser?style=duotone

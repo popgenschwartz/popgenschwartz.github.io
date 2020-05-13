@@ -13,5 +13,10 @@ navbar:
       href: m2.html
     - text: "Module Three"
       href: m3.html
-     
+   right: 
+    - icon: fa-github fa-lg
+      href: https://popgenschwartz/popgenschwartz.github.io
+    - icon: fa-browser fa-lg
+      href: https://www.schwartzlab-ecoevolutionarygenomics.org/
+      
      
