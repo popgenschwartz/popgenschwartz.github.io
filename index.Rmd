@@ -1,3 +1,5 @@
 ---
-title: "Index Page" 
+title: "Welcome to the Population Genetics Data Analysis Tutorial Series" 
 ---
+
+Test file to make sure text updates.
