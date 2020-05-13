@@ -1,0 +1,15 @@
+---
+title: "Code for Runs"
+author: "Abby Beatty"
+date: "May 13, 2020"
+output: html_document
+---
+
+```{r}
+#to render site to html file after making changes
+rmarkdown::render_site()
+#this worked correctly if you get a message saying "Output created: index.html"
+
+##hit ctrl-alt-M to commit changes. Make sure all boxes are checked first. Add a comment, click commit, and then push to github. A box should appear telling you everything has pushed successfully.
+
+```

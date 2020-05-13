@@ -1,0 +1,17 @@
+name: "Population Genetics Tutorials"
+output_dir: "."
+navbar: 
+  title: "Title"
+  left:
+    - text: "Home" 
+      href: index.html
+    - text: "Mini Modules"
+      href: mini.html 
+    - text: "Module One"
+      href: m1.html
+    - text: "Module Two"
+      href: m2.html
+    - text: "Module Three"
+      href: m3.html
+     
+     
