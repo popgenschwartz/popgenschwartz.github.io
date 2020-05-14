@@ -1,7 +1,7 @@
-name: "."
+name: "Test"
 output_dir: "."
 navbar:
-  title: "."
+  title: "Test"
   left:
     - text: "Home" 
       href: index.html
@@ -13,8 +13,3 @@ navbar:
       href: m2.html
     - text: "Module Three"
       href: m3.html
-  right:
-    - icon: fa-github fa-lg
-      href: http://github.com/popgenschwartz
-    - icon: fa-browser fa-lg
-      href: https://www.schwartzlab-ecoevolutionarygenomics.org/
