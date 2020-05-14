@@ -20,9 +20,7 @@ Broad description of Module One and raw data.
 
 </font>
 
-
-
-# Modules {.tabset .tabset-dropdown}
+# **Modules**{.tabset .tabset-dropdown}
 
 ## Tutorial 1.1
 <font size="5">

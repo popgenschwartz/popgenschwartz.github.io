@@ -11,7 +11,7 @@
 
 
 
-<title>Mini Modules</title>
+<title>Code_for_Runs</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -314,12 +314,67 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Mini Modules</h1>
+<h1 class="title toc-ignore">Code_for_Runs</h1>
 
 </div>
 
 
+<pre class="r"><code>#to render site to html file after making changes
+#rmarkdown::render_site()
+#this worked correctly if you get a message saying &quot;Output created: index.html&quot;
 
+##hit ctrl-alt-M to commit changes. Make sure all boxes are checked first. Add a comment, click commit, and then push to github. A box should appear telling you everything has pushed successfully.
+
+#the r version for commiting and pushing files can be really touchy. To do it from the command line, use the following code: 
+
+#go to directory 
+
+#git add .
+#git commit
+#git push
+
+# you get an error during commit that says it is already running, that is due to the fact that it is running in R. 
+
+#use &quot;rm FILENAME&quot; to get rid of it, and then use the commit command
+
+#be sure to use helpful comments so when you look at the version history, it makes sense
+
+#Note yaml files are really touchy. any blank spaces or bad links will cause all of your files to stop knitting. See below for webpage to test the validity of your yaml file </code></pre>
+<blockquote>
+<p>Markdown cheat sheet:</p>
+</blockquote>
+<p><a href="https://rmarkdown.rstudio.com/authoring_basics.html" class="uri">https://rmarkdown.rstudio.com/authoring_basics.html</a><br />
+<a href="https://bookdown.org/yihui/rmarkdown-cookbook/indent-text.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/indent-text.html</a></p>
+<blockquote>
+<p>YAML test</p>
+</blockquote>
+<p><a href="http://www.yamllint.com/" class="uri">http://www.yamllint.com/</a></p>
+<blockquote>
+<p>Helpful webpages:</p>
+</blockquote>
+<p><a href="https://livefreeordichotomize.com/2017/08/08/how-to-make-an-rmarkdown-website/" class="uri">https://livefreeordichotomize.com/2017/08/08/how-to-make-an-rmarkdown-website/</a></p>
+<blockquote>
+<p>Icons for Markdown:</p>
+</blockquote>
+<p><a href="https://fontawesome.com/icons/browser?style=duotone" class="uri">https://fontawesome.com/icons/browser?style=duotone</a></p>
+<div id="icon-code" class="section level1">
+<h1>Icon Code</h1>
+</div>
+<div id="right" class="section level1">
+<h1>right:</h1>
+</div>
+<div id="icon-fa-github-fa-lg" class="section level1">
+<h1>- icon: fa-github fa-lg</h1>
+</div>
+<div id="href-httpspopgenschwartzpopgenschwartz.github.io" class="section level1">
+<h1>href: <a href="https://popgenschwartz/popgenschwartz.github.io" class="uri">https://popgenschwartz/popgenschwartz.github.io</a></h1>
+</div>
+<div id="icon-fa-browser-fa-lg" class="section level1">
+<h1>- icon: fa-browser fa-lg</h1>
+</div>
+<div id="href-httpswww.schwartzlab-ecoevolutionarygenomics.org" class="section level1">
+<h1>href: <a href="https://www.schwartzlab-ecoevolutionarygenomics.org/" class="uri">https://www.schwartzlab-ecoevolutionarygenomics.org/</a></h1>
+</div>
 
 
 

@@ -4,7 +4,7 @@ title: "Code_for_Runs"
 
 ```{r}
 #to render site to html file after making changes
-rmarkdown::render_site()
+#rmarkdown::render_site()
 #this worked correctly if you get a message saying "Output created: index.html"
 
 ##hit ctrl-alt-M to commit changes. Make sure all boxes are checked first. Add a comment, click commit, and then push to github. A box should appear telling you everything has pushed successfully.
@@ -28,19 +28,25 @@ rmarkdown::render_site()
 ```
 
 >Markdown cheat sheet:  
+
 https://rmarkdown.rstudio.com/authoring_basics.html  
+https://bookdown.org/yihui/rmarkdown-cookbook/indent-text.html
 
 >YAML test  
+
 http://www.yamllint.com/  
 
 >Helpful webpages:   
+
 https://livefreeordichotomize.com/2017/08/08/how-to-make-an-rmarkdown-website/
 
 >Icons for Markdown:  
+
 https://fontawesome.com/icons/browser?style=duotone  
+
 #Icon Code
-  right:
-    - icon: fa-github fa-lg  
-      href: https://popgenschwartz/popgenschwartz.github.io  
-    - icon: fa-browser fa-lg  
-      href: https://www.schwartzlab-ecoevolutionarygenomics.org/  
+#  right:
+#    - icon: fa-github fa-lg  
+#      href: https://popgenschwartz/popgenschwartz.github.io  
+#    - icon: fa-browser fa-lg  
+#      href: https://www.schwartzlab-ecoevolutionarygenomics.org/  
