@@ -23,7 +23,12 @@ rmarkdown::render_site()
 
 #be sure to use helpful comments so when you look at the version history, it makes sense
 
+#Note yaml files are really touchy. any blank spaces or bad links will cause all of your files to stop knitting. See below for webpage to test the validity of your yaml file 
+
 ```
+
+>YAML test
+http://www.yamllint.com/
 
 >Helpful webpages: 
 https://livefreeordichotomize.com/2017/08/08/how-to-make-an-rmarkdown-website/
