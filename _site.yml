@@ -16,5 +16,3 @@ navbar:
   right:
     - icon: fa-github fa-lg
       href: http://github.com/popgenschwartz
-    - icon: fa-browser fa-lg
-      href: https://www.schwartzlab-ecoevolutionarygenomics.org/
