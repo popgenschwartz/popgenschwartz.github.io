@@ -1,7 +1,6 @@
 name: "Population Genetics Tutorials"
 output_dir: "."
 navbar:
-  title: ""
   left:
     - text: "Home" 
       href: index.html
