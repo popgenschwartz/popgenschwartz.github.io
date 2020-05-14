@@ -1,4 +1,146 @@
 ---
-title: "Module 1"
+title: "Working with Raw Data"
 ---
+```{r, echo=F}
+#devtools::install_github("rstudio/rmarkdown")
+```
 
+###Background
+<font size="3"> 
+
+Broad description of Module one and raw data.
+Broad description of Module One and raw data. 
+Broad description of Module One and raw data. 
+Broad description of Module One and raw data. 
+Broad description of Module One and raw data. 
+Broad description of Module One and raw data. 
+Broad description of Module One and raw data. 
+Broad description of Module One and raw data. 
+Broad description of Module One and raw data. 
+
+</font>
+
+
+
+# Modules {.tabset .tabset-dropdown}
+
+## Tutorial 1.1
+<font size="5">
+**Understanding your data**
+</font>
+
+### BLAST_script
+BLAST stands for Basic Local Alignment Search Tool. There are quite a few different types of blast options: 
+- BLASTN: Nucleotide
+- BLASTP: Protein 
+- And less common BLASTX, TBLASTN, and TBLASTX
+
+BLASTN, which is what is used in this spript, uses a nucleotide query and a nucleotide database. It matches oligos to a genome.
+A blast output generally provides raw scores, and Expect Value (E-value), and a list of alignments. However, there are many ways to limit the output, all of which can be found using `blastn --help`. 
+
+Output Options: 
+> Alignment view options:  
+> 0 = Pairwise  
+> 1 = Query-anchored showing identities  
+> 2 = Query-anchored no identities  
+> 3 = Flat query-anchored showing identities  
+> 4 = Flat query-anchored no identities  
+> 5 = BLAST XML  
+> 6 = Tabular  
+> 7 = Tabular with comment lines  
+> 8 = Seqalign (Text ASN.1)  
+> 9 = Seqalign (Binary ASN.1)    
+> 10 = Comma-separated values  
+> 11 = BLAST archive (ASN.1)  
+> 12 = Seqalign (JSON)  
+> 13 = Multiple-file BLAST JSON  
+> 14 = Multiple-file BLAST XML2  
+> 15 = Single-file BLAST JSON  
+> 16 = Single-file BLAST XML2  
+> 17 = Sequence Alignment/Map (SAM) 
+
+
+Option 7 was used to display the results in the tabular with comments format. Two limitations were used in our script to set a  limit of one hit per query and the E-value to values less than 0.0001 (the smaller the E-value, the better):   
+`-evalue` and `max_target_seqs` 
+
+The general design of a blast from the command line is: 
+`blastn -db "DATABASE1" DATABASE2"... -query "FILE.fasta" -output "OUT TYPE" -[limit output: -evalue -Max_target_seqs or sorting of results]`
+
+Example of BLAST:   
+`blastn -db "ATmt.fasta ATcp.fasta ATchrV.fasta Arabidopsis_thaliana/CHR_I/NC_003070.gbk Arabidopsis_thaliana/CHR_II/NC_003071.gbk Arabidopsis_thaliana/CHR_III/NC_003074.gbk" -query test.fasta -outfmt 7 -evalue 0.00001 -max_target-seqs 1| egrep -v '^#'| sed 's/[[:space:]]1_\/home.*NC_[0-9]*[[:space:]]/\tNT\t/'| awk '{print $1,$2}' | sort | uniq | awk '{print $2}' | sort | uniq -c | sort -n > RawCounts.txt`
+In this code, the output of the number of hits from the mt, cp, and chrV fasta files were put into a file called RawCounts.txt
+
+Finding "Dropped" sequences (No Hits):
+`NUM=$(blastn -db "ATmt.fasta ATcp.fasta ATchrV.fasta Arabidopsis_thaliana/CHR_I/NC_003070.gbk Arabidopsis_thaliana/CHR_II/NC_003071.gbk Arabidopsis_thaliana/CHR_III/NC_003074.gbk" -query test.fasta -outfmt 7 -evalue 0.00001 -max_target-seqs 1 | grep -c ' 0 hits ' ) && echo No_hits $NUM >> RawCounts.txt`
+This counts the number of "No Hits" that occurred during the blast, and adds it to the RawCounts.txt file.
+
+```{r, eval=F}
+# !/bin/bash
+
+module load samtools
+module load bwa
+
+#BWA
+
+	#aligns
+	#M= picard tools compatability
+	#-v= verbose
+	#T=Number of threads
+	#order: reference, input, pipe to output
+	#sort
+	#Sbu sam to bam file
+
+bwa mem -M  -v 2 -t 6 -R "@RG\tID:Rep9Gen623_1\tSM:Rep9Gen6\tPL:illumina\tPU:_1\tLB:SRR1693723_1" sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693723.C1630ACXX6.fastq.gz | samtools view -Sb | samtools sort > SRR1693723_1.sorted.bam
+bwa mem -M  -v 2 -t 6 -R "@RG\tID:Rep9Gen623_2\tSM:Rep9Gen6\tPL:illumina\tPU:_2\tLB:SRR1693723_2" sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693723.C1AC9ACXX5.fastq.gz | samtools view -Sb | samtools sort > SRR1693723_2.sorted.bam
+bwa mem -M  -v 2 -t 6 -R "@RG\tID:Rep9Gen623_3\tSM:Rep9Gen6\tPL:illumina\tPU:_3\tLB:SRR1693723_3" sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693723.C1AC9ACXX6.fastq.gz | samtools view -Sb | samtools sort > SRR1693723_3.sorted.bam
+bwa mem -M  -v 2 -t 6 -R "@RG\tID:Rep9Gen624_1\tSM:Rep9Gen6\tPL:illumina\tPU:_1\tLB:SRR1693724_1" sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693724.C1630ACXX6.fastq.gz | samtools view -Sb | samtools sort > SRR1693724_1.sorted.bam
+bwa mem -M  -v 2 -t 6 -R "@RG\tID:Rep9Gen624_2\tSM:Rep9Gen6\tPL:illumina\tPU:_2\tLB:SRR1693724_2" sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693724.C1AC9ACXX5.fastq.gz | samtools view -Sb | samtools sort > SRR1693724_2.sorted.bam
+bwa mem -M  -v 2 -t 6 -R "@RG\tID:Rep9Gen624_3\tSM:Rep9Gen6\tPL:illumina\tPU:_3\tLB:SRR1693724_3" sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693724.C1AC9ACXX6.fastq.gz | samtools view -Sb | samtools sort > SRR1693724_3.sorted.bam
+bwa mem -M  -v 2 -t 6 -R "@RG\tID:Rep9Gen628_1\tSM:Rep9Gen6\tPL:illumina\tPU:_1\tLB:SRR1693728_1" sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693728.C1AC9ACXX2.fastq.gz | samtools view -Sb | samtools sort > SRR1693728_1.sorted.bam
+bwa mem -M  -v 2 -t 6 -R "@RG\tID:Rep9Gen628_2\tSM:Rep9Gen6\tPL:illumina\tPU:_2\tLB:SRR1693728_2" sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693728.C1AC9ACXX3.fastq.gz | samtools view -Sb | samtools sort > SRR1693728_2.sorted.bam
+bwa mem -M  -v 2 -t 6 -R "@RG\tID:Rep9Gen628_3\tSM:Rep9Gen6\tPL:illumina\tPU:_3\tLB:SRR1693728_3" sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693728.D19EFACXX1.fastq.gz | samtools view -Sb | samtools sort > SRR1693728_3.sorted.bam
+
+	#index the samples above
+samtools index -b SRR1693723_1.sorted.bam
+samtools index -b SRR1693723_2.sorted.bam
+samtools index -b SRR1693723_3.sorted.bam
+samtools index -b SRR1693724_1.sorted.bam
+samtools index -b SRR1693724_2.sorted.bam
+samtools index -b SRR1693724_3.sorted.bam
+samtools index -b SRR1693728_1.sorted.bam
+samtools index -b SRR1693728_2.sorted.bam
+samtools index -b SRR1693728_3.sorted.bam
+
+#Merging
+	#Finally merge these together and sort and index the merged bam file to assess the quality using samtools
+	#Have the indexed files in the same directory as the bam files
+
+samtools merge -r SRR1693723.merged.bam SRR1693723_1.sorted.bam SRR1693723_2.sorted.bam SRR1693723_3.sorted.bam
+samtools merge -r SRR1693724.merged.bam SRR1693724_1.sorted.bam SRR1693724_2.sorted.bam SRR1693724_3.sorted.bam
+samtools merge -r SRR1693728.merged.bam SRR1693728_1.sorted.bam SRR1693728_2.sorted.bam SRR1693728_3.sorted.bam
+
+samtools sort SRR1693723.merged.bam > SRR1693723.merged.final.bam
+samtools sort SRR1693724.merged.bam > ~/Group_Project/Part_2/Final_output/SRR1693724.merged.final.bam
+samtools sort SRR1693728.merged.bam > ~/Group_Project/Part_2/Final_output/SRR1693728.merged.final.bam
+
+samtools index -b SRR1693723.merged.final.bam
+samtools index -b ~/Group_Project/Part_2/Final_output/SRR1693724.merged.final.bam
+samtools index -b ~/Group_Project/Part_2/Final_output/SRR1693728.merged.final.bam
+
+```
+
+
+
+## Tutorial 1.2
+
+
+## Tutorial 1.3
+
+
+#Resources 
+Type | Link
+---- | ----
+Background Lecture | [Lecture]()
+Manual | [link]()
+Webpage | [link]()
+File | [link]()

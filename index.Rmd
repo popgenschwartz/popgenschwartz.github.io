@@ -1,7 +1,28 @@
 ---
-title: "Welcome to the Population Genetics Data Analysis Tutorial Series"
+title: "Welcome to the Data Analysis Tutorial Series"
 ---
 
-```{r}
-#Test file to make sure text updates.
+```{r, echo=F}
+#keep the code below spaced exactly as it is. If you take out spaces, the image disappears 
+ 
 ```
+<center>
+
+![](popgenimage.jpg)
+</center>
+
+```{r, echo=F}
+
+#to change font formatting: 
+#<font size="1"> This is my text number1</font> 
+
+
+```
+
+<font size="3"> 
+
+
+Place text here explaining the point of the tutorials, how you can follow them, which order we recommend...
+
+</font>
+

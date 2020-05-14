@@ -1,7 +1,6 @@
-name: "Test"
+name: "Population Genetics Tutorials"
 output_dir: "."
 navbar:
-  title: "Test"
   left:
     - text: "Home" 
       href: index.html
@@ -13,3 +12,11 @@ navbar:
       href: m2.html
     - text: "Module Three"
       href: m3.html
+  right:
+    - icon: fa-github fa-3x
+      href: http://github.com/popgenschwartz
+    - icon: fa-school fa-3x
+      href: https://www.schwartzlab-ecoevolutionarygenomics.org/
+output: 
+  html_document:
+    remote_theme: benbalter/retlab
