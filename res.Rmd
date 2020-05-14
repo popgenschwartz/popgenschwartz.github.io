@@ -1,0 +1,20 @@
+---
+title: "Additional Resources"
+---
+
+
+#Resources 
+Module | Type | Link
+---- | ---- | ----
+M1 | Background Lecture | [Lecture]()
+M1 | Manual | [link]()
+M1 | Webpage | [link]()
+M1 | File | [link]()
+M2 | Background Lecture | [Lecture]()
+M2 | Manual | [link]()
+M2 | Webpage | [link]()
+M2 | File | [link]()
+M3 | Background Lecture | [Lecture]()
+M3 | Manual | [link]()
+M3 | Webpage | [link]()
+M3 | File | [link]()

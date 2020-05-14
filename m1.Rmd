@@ -135,12 +135,3 @@ samtools index -b ~/Group_Project/Part_2/Final_output/SRR1693728.merged.final.ba
 
 
 ## Tutorial 1.3
-
-
-#Resources 
-Type | Link
----- | ----
-Background Lecture | [Lecture]()
-Manual | [link]()
-Webpage | [link]()
-File | [link]()

@@ -12,6 +12,8 @@ navbar:
       href: m2.html
     - text: "Module Three"
       href: m3.html
+    - text: "Resources"
+      href: res.html
   right:
     - icon: fa-github fa-3x
       href: http://github.com/popgenschwartz
