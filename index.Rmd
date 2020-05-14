@@ -1,5 +1,7 @@
 ---
-title: "Welcome to the Population Genetics Data Analysis Tutorial Series" 
+title: "Welcome to the Population Genetics Data Analysis Tutorial Series"
 ---
 
-Test file to make sure text updates.
+```{r}
+#Test file to make sure text updates.
+```
