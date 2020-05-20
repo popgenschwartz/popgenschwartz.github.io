@@ -20,7 +20,7 @@ Broad description of Module One and raw data.
 
 </font>
 
-# **Modules**{.tabset .tabset-dropdown}
+# **Modules**## {.tabset .tabset-fade .tabset-pills}
 
 ## Tutorial 1.1
 <font size="5">
