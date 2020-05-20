@@ -4,6 +4,8 @@ navbar:
   left:
     - text: "Home" 
       href: index.html
+    - text: "Contents"
+      href: TOC.html
     - text: "Simulations"
       href: mini.html
     - text: "Module One"
