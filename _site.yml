@@ -11,6 +11,8 @@ navbar:
     - text: "Module 1"
       href: m1.html
       menu:    
+        - text: "Overview"
+          href: ov1.html
         - text: "Tutorial 1.1"
           href: t1.1.html
         - text: "Tutorial 1.2"
