@@ -15,9 +15,9 @@ navbar:
     - text: "Resources"
       href: res.html
   right:
-    - icon: fa-github fa-3x
+    - icon: fa-github fa-2x
       href: http://github.com/popgenschwartz
-    - icon: fa-school fa-3x
+    - icon: fa-school fa-2x
       href: https://www.schwartzlab-ecoevolutionarygenomics.org/
 output: 
   html_document:
