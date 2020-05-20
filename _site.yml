@@ -19,12 +19,40 @@ navbar:
           href: t1.3.html
     - text: "Module 2"
       href: m2.html
+      menu:    
+        - text: "Tutorial 2.1"
+          href: t2.1.html
+        - text: "Tutorial 2.2"
+          href: t2.2.html
+        - text: "Tutorial 2.3"
+          href: t2.3.html
     - text: "Module 3"
       href: m3.html
+      menu:    
+        - text: "Tutorial 3.1"
+          href: t3.1.html
+        - text: "Tutorial 3.2"
+          href: t3.2.html
+        - text: "Tutorial 3.3"
+          href: t3.3.html
     - text: "Module 4"
       href: m4.html
+      menu:    
+        - text: "Tutorial 4.1"
+          href: t4.1.html
+        - text: "Tutorial 4.2"
+          href: t4.2.html
+        - text: "Tutorial 4.3"
+          href: t4.3.html
     - text: "Module 5"
       href: m5.html
+      menu:    
+        - text: "Tutorial 5.1"
+          href: t5.1.html
+        - text: "Tutorial 5.2"
+          href: t5.2.html
+        - text: "Tutorial 5.3"
+          href: t5.3.html
     - text: "Resources"
       href: res.html
   right:
