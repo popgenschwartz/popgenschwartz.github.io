@@ -292,6 +292,12 @@ $(document).ready(function () {
   <a href="m3.html">Module 3</a>
 </li>
 <li>
+  <a href="m4.html">Module 4</a>
+</li>
+<li>
+  <a href="m5.html">Module 5</a>
+</li>
+<li>
   <a href="res.html">Resources</a>
 </li>
       </ul>
@@ -326,101 +332,9 @@ $(document).ready(function () {
 <h3>Background</h3>
 <p><font size="3"></p>
 <p>Broad description of Module one and raw data. Broad description of Module One and raw data. Broad description of Module One and raw data. Broad description of Module One and raw data. Broad description of Module One and raw data. Broad description of Module One and raw data. Broad description of Module One and raw data. Broad description of Module One and raw data. Broad description of Module One and raw data.</p>
-<p></font></p>
-</div>
-<div id="modules" class="section level1 tabset tabset-fade tabset-pills">
-<h1><strong>Modules</strong></h1>
-<div id="tutorial-1.1" class="section level2">
-<h2>Tutorial 1.1</h2>
-<p><font size="5"> <strong>Understanding your data</strong> </font></p>
-<div id="blast_script" class="section level3">
-<h3>BLAST_script</h3>
-<p>BLAST stands for Basic Local Alignment Search Tool. There are quite a few different types of blast options: - BLASTN: Nucleotide - BLASTP: Protein - And less common BLASTX, TBLASTN, and TBLASTX</p>
-<p>BLASTN, which is what is used in this spript, uses a nucleotide query and a nucleotide database. It matches oligos to a genome. A blast output generally provides raw scores, and Expect Value (E-value), and a list of alignments. However, there are many ways to limit the output, all of which can be found using <code>blastn --help</code>.</p>
-<p>Output Options: &gt; Alignment view options:<br />
-&gt; 0 = Pairwise<br />
-&gt; 1 = Query-anchored showing identities<br />
-&gt; 2 = Query-anchored no identities<br />
-&gt; 3 = Flat query-anchored showing identities<br />
-&gt; 4 = Flat query-anchored no identities<br />
-&gt; 5 = BLAST XML<br />
-&gt; 6 = Tabular<br />
-&gt; 7 = Tabular with comment lines<br />
-&gt; 8 = Seqalign (Text ASN.1)<br />
-&gt; 9 = Seqalign (Binary ASN.1)<br />
-&gt; 10 = Comma-separated values<br />
-&gt; 11 = BLAST archive (ASN.1)<br />
-&gt; 12 = Seqalign (JSON)<br />
-&gt; 13 = Multiple-file BLAST JSON<br />
-&gt; 14 = Multiple-file BLAST XML2<br />
-&gt; 15 = Single-file BLAST JSON<br />
-&gt; 16 = Single-file BLAST XML2<br />
-&gt; 17 = Sequence Alignment/Map (SAM)</p>
-<p>Option 7 was used to display the results in the tabular with comments format. Two limitations were used in our script to set a limit of one hit per query and the E-value to values less than 0.0001 (the smaller the E-value, the better):<br />
-<code>-evalue</code> and <code>max_target_seqs</code></p>
-<p>The general design of a blast from the command line is: <code>blastn -db &quot;DATABASE1&quot; DATABASE2&quot;... -query &quot;FILE.fasta&quot; -output &quot;OUT TYPE&quot; -[limit output: -evalue -Max_target_seqs or sorting of results]</code></p>
-<p>Example of BLAST:<br />
-<code>blastn -db &quot;ATmt.fasta ATcp.fasta ATchrV.fasta Arabidopsis_thaliana/CHR_I/NC_003070.gbk Arabidopsis_thaliana/CHR_II/NC_003071.gbk Arabidopsis_thaliana/CHR_III/NC_003074.gbk&quot; -query test.fasta -outfmt 7 -evalue 0.00001 -max_target-seqs 1| egrep -v '^#'| sed 's/[[:space:]]1_\/home.*NC_[0-9]*[[:space:]]/\tNT\t/'| awk '{print $1,$2}' | sort | uniq | awk '{print $2}' | sort | uniq -c | sort -n &gt; RawCounts.txt</code> In this code, the output of the number of hits from the mt, cp, and chrV fasta files were put into a file called RawCounts.txt</p>
-<p>Finding “Dropped” sequences (No Hits): <code>NUM=$(blastn -db &quot;ATmt.fasta ATcp.fasta ATchrV.fasta Arabidopsis_thaliana/CHR_I/NC_003070.gbk Arabidopsis_thaliana/CHR_II/NC_003071.gbk Arabidopsis_thaliana/CHR_III/NC_003074.gbk&quot; -query test.fasta -outfmt 7 -evalue 0.00001 -max_target-seqs 1 | grep -c ' 0 hits ' ) &amp;&amp; echo No_hits $NUM &gt;&gt; RawCounts.txt</code> This counts the number of “No Hits” that occurred during the blast, and adds it to the RawCounts.txt file.</p>
-<pre class="r"><code># !/bin/bash
-
-module load samtools
-module load bwa
-
-#BWA
-
-    #aligns
-    #M= picard tools compatability
-    #-v= verbose
-    #T=Number of threads
-    #order: reference, input, pipe to output
-    #sort
-    #Sbu sam to bam file
-
-bwa mem -M  -v 2 -t 6 -R &quot;@RG\tID:Rep9Gen623_1\tSM:Rep9Gen6\tPL:illumina\tPU:_1\tLB:SRR1693723_1&quot; sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693723.C1630ACXX6.fastq.gz | samtools view -Sb | samtools sort &gt; SRR1693723_1.sorted.bam
-bwa mem -M  -v 2 -t 6 -R &quot;@RG\tID:Rep9Gen623_2\tSM:Rep9Gen6\tPL:illumina\tPU:_2\tLB:SRR1693723_2&quot; sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693723.C1AC9ACXX5.fastq.gz | samtools view -Sb | samtools sort &gt; SRR1693723_2.sorted.bam
-bwa mem -M  -v 2 -t 6 -R &quot;@RG\tID:Rep9Gen623_3\tSM:Rep9Gen6\tPL:illumina\tPU:_3\tLB:SRR1693723_3&quot; sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693723.C1AC9ACXX6.fastq.gz | samtools view -Sb | samtools sort &gt; SRR1693723_3.sorted.bam
-bwa mem -M  -v 2 -t 6 -R &quot;@RG\tID:Rep9Gen624_1\tSM:Rep9Gen6\tPL:illumina\tPU:_1\tLB:SRR1693724_1&quot; sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693724.C1630ACXX6.fastq.gz | samtools view -Sb | samtools sort &gt; SRR1693724_1.sorted.bam
-bwa mem -M  -v 2 -t 6 -R &quot;@RG\tID:Rep9Gen624_2\tSM:Rep9Gen6\tPL:illumina\tPU:_2\tLB:SRR1693724_2&quot; sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693724.C1AC9ACXX5.fastq.gz | samtools view -Sb | samtools sort &gt; SRR1693724_2.sorted.bam
-bwa mem -M  -v 2 -t 6 -R &quot;@RG\tID:Rep9Gen624_3\tSM:Rep9Gen6\tPL:illumina\tPU:_3\tLB:SRR1693724_3&quot; sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693724.C1AC9ACXX6.fastq.gz | samtools view -Sb | samtools sort &gt; SRR1693724_3.sorted.bam
-bwa mem -M  -v 2 -t 6 -R &quot;@RG\tID:Rep9Gen628_1\tSM:Rep9Gen6\tPL:illumina\tPU:_1\tLB:SRR1693728_1&quot; sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693728.C1AC9ACXX2.fastq.gz | samtools view -Sb | samtools sort &gt; SRR1693728_1.sorted.bam
-bwa mem -M  -v 2 -t 6 -R &quot;@RG\tID:Rep9Gen628_2\tSM:Rep9Gen6\tPL:illumina\tPU:_2\tLB:SRR1693728_2&quot; sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693728.C1AC9ACXX3.fastq.gz | samtools view -Sb | samtools sort &gt; SRR1693728_2.sorted.bam
-bwa mem -M  -v 2 -t 6 -R &quot;@RG\tID:Rep9Gen628_3\tSM:Rep9Gen6\tPL:illumina\tPU:_3\tLB:SRR1693728_3&quot; sacCer3 /home/aubcls35/Group_Project/Part_1/SRR1693728.D19EFACXX1.fastq.gz | samtools view -Sb | samtools sort &gt; SRR1693728_3.sorted.bam
-
-    #index the samples above
-samtools index -b SRR1693723_1.sorted.bam
-samtools index -b SRR1693723_2.sorted.bam
-samtools index -b SRR1693723_3.sorted.bam
-samtools index -b SRR1693724_1.sorted.bam
-samtools index -b SRR1693724_2.sorted.bam
-samtools index -b SRR1693724_3.sorted.bam
-samtools index -b SRR1693728_1.sorted.bam
-samtools index -b SRR1693728_2.sorted.bam
-samtools index -b SRR1693728_3.sorted.bam
-
-#Merging
-    #Finally merge these together and sort and index the merged bam file to assess the quality using samtools
-    #Have the indexed files in the same directory as the bam files
-
-samtools merge -r SRR1693723.merged.bam SRR1693723_1.sorted.bam SRR1693723_2.sorted.bam SRR1693723_3.sorted.bam
-samtools merge -r SRR1693724.merged.bam SRR1693724_1.sorted.bam SRR1693724_2.sorted.bam SRR1693724_3.sorted.bam
-samtools merge -r SRR1693728.merged.bam SRR1693728_1.sorted.bam SRR1693728_2.sorted.bam SRR1693728_3.sorted.bam
-
-samtools sort SRR1693723.merged.bam &gt; SRR1693723.merged.final.bam
-samtools sort SRR1693724.merged.bam &gt; ~/Group_Project/Part_2/Final_output/SRR1693724.merged.final.bam
-samtools sort SRR1693728.merged.bam &gt; ~/Group_Project/Part_2/Final_output/SRR1693728.merged.final.bam
-
-samtools index -b SRR1693723.merged.final.bam
-samtools index -b ~/Group_Project/Part_2/Final_output/SRR1693724.merged.final.bam
-samtools index -b ~/Group_Project/Part_2/Final_output/SRR1693728.merged.final.bam</code></pre>
-</div>
-</div>
-<div id="tutorial-1.2" class="section level2">
-<h2>Tutorial 1.2</h2>
-</div>
-<div id="tutorial-1.3" class="section level2">
-<h2>Tutorial 1.3</h2>
-</div>
+<p><a href="t1.1.html">Tutorial 1.1: Understanding your data</a><br />
+<a href="t1.2.html">Tutorial 1.2: From raw data to SNP data</a><br />
+<a href="t1.3.html">Tutorial 1.3: Upscaling to WGS</a></p>
 </div>
 
 
