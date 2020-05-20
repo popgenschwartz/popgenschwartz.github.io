@@ -8,7 +8,7 @@ title: "Welcome to the Data Analysis Tutorial Series"
 ```
 <center>
 
-![](popgenimage.jpg)
+![](wordcloud.jpg)
 </center>
 
 ```{r, echo=F}
