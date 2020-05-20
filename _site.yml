@@ -4,7 +4,7 @@ navbar:
   left:
     - text: "Home" 
       href: index.html
-    - text: "Mini Modules"
+    - text: "Simulations"
       href: mini.html
     - text: "Module One"
       href: m1.html
@@ -21,4 +21,4 @@ navbar:
       href: https://www.schwartzlab-ecoevolutionarygenomics.org/
 output: 
   html_document:
-    remote_theme: benbalter/retlab
+    theme: flatly 
